@@ -7,8 +7,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
@@ -53,12 +51,12 @@
                                                       </Stop>
                                                       <Stop offset="0.006711409395973154">
                                                          <color>
-                                                            <Color red="0.48802995681762695" green="0.017909357324242592" blue="0.6447368264198303" />
+                                                            <Color red="0.019200000911951065" green="0.09753905236721039" blue="0.6399999856948853" />
                                                          </color>
                                                       </Stop>
                                                       <Stop offset="1.0">
                                                          <color>
-                                                            <Color red="0.8506883382797241" green="0.45358186960220337" blue="0.9605262875556946" />
+                                                            <Color red="0.4854166805744171" green="0.4583333432674408" blue="1.0" />
                                                          </color>
                                                       </Stop>
                                                    </stops>
@@ -91,11 +89,7 @@
                                        <children>
                                           <AnchorPane layoutX="6.0" layoutY="4.0" prefHeight="37.0" prefWidth="39.0" styleClass="user-image-view" stylesheets="@css/accountView.css" translateX="-3.0" translateY="-1.0">
                                              <children>
-                                                <ImageView fitHeight="36.0" fitWidth="54.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" styleClass="user-image-view" translateX="-1.0" translateY="-2.0">
-                                                   <image>
-                                                      <Image url="@image/user.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <FontAwesomeIconView fill="#060175" glyphName="USER" layoutX="11.0" layoutY="27.0" size="25" />
                                              </children>
                                           </AnchorPane>
                                           <Label layoutX="46.0" layoutY="9.0" prefHeight="26.0" prefWidth="88.0" text="Ngane Emmanuel" />
@@ -104,14 +98,14 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="312.0" layoutY="10.0" prefHeight="37.0" prefWidth="38.0" styleClass="user-image-view" stylesheets="@css/accountView.css" AnchorPane.rightAnchor="163.0">
                                        <children>
-                                          <AnchorPane layoutX="25.0" prefHeight="10.0" prefWidth="8.0" style="-fx-background-color: #a900fa;" styleClass="user-image-view" stylesheets="@css/accountView.css" />
+                                          <AnchorPane layoutX="25.0" prefHeight="10.0" prefWidth="8.0" style="-fx-background-color: #050041;" styleClass="user-image-view" stylesheets="@css/accountView.css" />
                                           <FontAwesomeIconView glyphName="BELL" layoutX="9.0" layoutY="25.0" size="20.0">
                                              <fill>
-                                                <LinearGradient endX="1.0" endY="1.0">
+                                                <LinearGradient endX="1.0" endY="0.7298578199052133" startX="0.46445497630331756" startY="0.34123222748815163">
                                                    <stops>
                                                       <Stop>
                                                          <color>
-                                                            <Color red="0.48802995681762695" green="0.017909357324242592" blue="0.6447368264198303" />
+                                                            <Color red="0.015411793254315853" green="0.020198790356516838" blue="0.30263158679008484" />
                                                          </color>
                                                       </Stop>
                                                       <Stop offset="1.0">

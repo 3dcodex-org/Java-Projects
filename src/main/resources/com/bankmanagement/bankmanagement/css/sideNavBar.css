@@ -1,5 +1,5 @@
 .side-nav{
-    -fx-background-color: linear-gradient(to top right, #a900fa, #7e03c6)
+    -fx-background-color: linear-gradient(to top right, #050041, #1908df)
 }
 .nav-btn{
     -fx-border-width: 0 0 1 0;
@@ -9,7 +9,7 @@
 }
 .nav-btn:hover, .signout-btn:hover{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
-    -fx-background-color: linear-gradient(to top right, #a900fa, #7e03c6);
+    -fx-background-color: linear-gradient(to top right, #050041, #1908df);
 }
 .signout-btn{
     -fx-cursor: hand;

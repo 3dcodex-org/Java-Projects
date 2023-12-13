@@ -5,7 +5,7 @@
     -fx-background-radius: 20px;
 }
 .header-caption{
-    -fx-background-color: linear-gradient(to top right, #a900fa, #7e03c6);
+    -fx-background-color: linear-gradient(to top right, #050041, #1908df);
 }
 .user-image-view{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.2), 8, 0, 0, 0);
@@ -31,7 +31,7 @@
  .filter-applyBtn{
     -fx-border-width: 0 0 0 0px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.2), 8, 0, 0, 0);
-    -fx-background-color: linear-gradient(to top right, #a900fa, #7e03c6);
+    -fx-background-color: linear-gradient(to top right, #050041, #1908df);
     -fx-border-radius: 3px;
     -fx-text-fill: #fff;
     -fx-cursor: hand;
