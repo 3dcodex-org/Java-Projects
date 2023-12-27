@@ -19,12 +19,12 @@ public class EmployeeDao implements EmployeePersist {
 
     public EmployeeDao(){
         this.bankManagementPersistentDao = new BankManagementPersistentDao();
-        this.entityManager = bankManagementPersistentDao.getEntityManager();
+        this.entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
 
     public EmployeeDao(BankManagementPersistentDao bankManagementPersistentDao) {
         this.bankManagementPersistentDao = bankManagementPersistentDao;
-        this.entityManager = bankManagementPersistentDao.getEntityManager();
+        this.entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
 
 

@@ -13,7 +13,12 @@ import java.util.List;
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "middle_name")
+    private String middleName;
+    @Column(name = "last_name")
+    private String lastName;
     private String email;
     private String password;
     @Column(name = "phone_number")
@@ -23,17 +28,20 @@ public class User {
     private String address2;
     private List<Authority> authority;
     private UserStatus status;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "accountHolder")
+    private List<Account> account;
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "transactionInitiator")
+    private List<Transaction> transactions;
     @Column(name = "created_date")
     private Date createdDate;
     @Column(name = "last_updated")
     private Date lastUpdated;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "user")
-    private List<Order> order;
 
     public User(){}
 
-    public User(String name, String email, String password, String phoneNumber, String city, String address1, String address2, List<Authority> authority) {
-        this.name = name;
+    public User(String firstName, String lastName, String email, String password, String phoneNumber, String city, String address1, String address2, List<Authority> authority) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -56,12 +64,28 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public String getEmail() {
@@ -136,19 +160,29 @@ public class User {
         this.createdDate = createdDate;
     }
 
-    public Date getlastUpdated() {
+    public List<Account> getAccount() {
+        return account;
+    }
+
+    public void setAccount(List<Account> account) {
+        this.account = account;
+    }
+
+    public Date getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setlastUpdated(Date lastupdated) {
-        this.lastUpdated = lastupdated;
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -157,6 +191,7 @@ public class User {
                 ", address2='" + address2 + '\'' +
                 ", authority=" + authority +
                 ", status=" + status +
+                ", account=" + account +
                 ", createdDate=" + createdDate +
                 ", lastUpdated=" + lastUpdated +
                 '}';

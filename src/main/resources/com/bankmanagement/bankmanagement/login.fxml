@@ -47,7 +47,7 @@
                         <Font name="Calibri" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="25.0" layoutY="422.0" text="Banking made easy. Savfe and reliable" textFill="#e38600">
+                  <Label layoutX="25.0" layoutY="422.0" text="Banking made easy. Save and reliable" textFill="#e38600">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

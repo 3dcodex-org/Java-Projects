@@ -1,8 +1,7 @@
 package com.bankmanagement.bankmanagement.dao.persistentInterfaces.entityPersist;
 
-
 import com.bankmanagement.bankmanagement.dao.persistentInterfaces.persistentUnit.BankManagementPersistentUnit;
-import com.bankmanagement.bankmanagement.model.Order;
+import com.bankmanagement.bankmanagement.model.Transaction;
 
-public interface OrderPersist extends BankManagementPersistentUnit<Order> {
+public interface TransactionPersist extends BankManagementPersistentUnit<Transaction> {
 }

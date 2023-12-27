@@ -1,8 +1,8 @@
-package com.bankmanagement.bankmanagement.helper.session.sessionClass;
+package com.bankmanagement.bankmanagement.service.session.sessionClass;
 
 
 import com.bankmanagement.bankmanagement.model.Employee;
-import com.bankmanagement.bankmanagement.helper.session.sessionInterface.UserSession;
+import com.bankmanagement.bankmanagement.service.session.sessionInterface.UserSession;
 
 public final class EmployeeSession implements UserSession<EmployeeSession, Employee> {
     private static EmployeeSession instance;

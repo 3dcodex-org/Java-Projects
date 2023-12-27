@@ -2,11 +2,11 @@
     <persistence-unit name="bankManagement_pu" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.bankmanagement.bankmanagement.model.Activities</class>
-        <class>com.bankmanagement.bankmanagement.model.Employee</class>
-        <class>com.bankmanagement.bankmanagement.model.Order</class>
-        <class>com.bankmanagement.bankmanagement.model.Service</class>
         <class>com.bankmanagement.bankmanagement.model.User</class>
+        <class>com.bankmanagement.bankmanagement.model.Employee</class>
+        <class>com.bankmanagement.bankmanagement.model.Account</class>
+        <class>com.bankmanagement.bankmanagement.model.Transaction</class>
+        <class>com.bankmanagement.bankmanagement.model.Activities</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bank"/>

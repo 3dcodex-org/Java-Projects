@@ -1,7 +1,9 @@
 package com.bankmanagement.bankmanagement.helper.status;
 
-public enum ServiceStatus {
+public enum AccountStatus {
+    PENDING,
     ACTIVE,
+    SUSPENDED,
     DEACTIVATED,
-    DELETED
+    DELETED,
 }

@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
 
     private final LoginService loginService;
     public LoginController(){
-        loginService = new LoginService();
+        this.loginService = new LoginService();
     }
 
     public LoginController(LoginService loginService){
@@ -73,7 +73,6 @@ public class LoginController implements Initializable {
         ){
             Employee employee = loginService.login(username.getText(), password.getText());
             if(employee != null){
-                //todo code for successful logging
                 loginBtn.getScene().getWindow().hide();
                 Stage stage = (Stage) loginBtn.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Account-view.fxml"));

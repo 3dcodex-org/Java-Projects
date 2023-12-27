@@ -23,5 +23,6 @@ module com.example.bankmanagement {
     exports com.bankmanagement.bankmanagement.model;
     exports com.bankmanagement.bankmanagement.service.serviceClass;
     exports com.bankmanagement.bankmanagement.dao.persistentinit;
+    exports com.bankmanagement.bankmanagement.helper.status;
     exports com.bankmanagement.bankmanagement;
 }

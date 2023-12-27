@@ -18,10 +18,14 @@ public class UserDao implements UserPersist {
     private final EntityManager entityManager;
 
     public UserDao() {
-        bankManagementPersistentDao = new BankManagementPersistentDao();
-        this.entityManager = bankManagementPersistentDao.getEntityManager();
+        this.bankManagementPersistentDao = new BankManagementPersistentDao();
+        this.entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
 
+    public UserDao(BankManagementPersistentDao bankManagementPersistentDao) {
+        this.bankManagementPersistentDao = bankManagementPersistentDao;
+        this.entityManager = this.bankManagementPersistentDao.getEntityManager();
+    }
 
     @Override
     public User add(User user) {

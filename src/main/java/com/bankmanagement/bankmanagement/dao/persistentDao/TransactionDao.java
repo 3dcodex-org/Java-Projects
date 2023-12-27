@@ -1,9 +1,9 @@
 package com.bankmanagement.bankmanagement.dao.persistentDao;
 
-import com.bankmanagement.bankmanagement.dao.persistentInterfaces.entityPersist.ActivitiesPersist;
+import com.bankmanagement.bankmanagement.dao.persistentInterfaces.entityPersist.TransactionPersist;
 import com.bankmanagement.bankmanagement.dao.persistentinit.BankManagementPersistentDao;
 import com.bankmanagement.bankmanagement.helper.helper.Merger;
-import com.bankmanagement.bankmanagement.model.Activities;
+import com.bankmanagement.bankmanagement.model.Transaction;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
@@ -11,120 +11,119 @@ import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unchecked")
-public class ActivitiesDao implements ActivitiesPersist {
+public class TransactionDao implements TransactionPersist {
     private final BankManagementPersistentDao bankManagementPersistentDao;
     private final EntityManager entityManager;
 
-    public ActivitiesDao() {
+    public TransactionDao(){
         bankManagementPersistentDao = new BankManagementPersistentDao();
         this.entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
 
-    public ActivitiesDao(BankManagementPersistentDao bankManagementPersistentDao) {
+    public TransactionDao(BankManagementPersistentDao bankManagementPersistentDao) {
         this.bankManagementPersistentDao = bankManagementPersistentDao;
         this.entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
 
     @Override
-    public Activities add(Activities activities) {
+    public Transaction add(Transaction transaction) {
         entityManager.getTransaction().begin();
-        entityManager.persist(activities);
+        entityManager.persist(transaction);
         entityManager.getTransaction().commit();
-        return activities;
+        return transaction;
     }
 
     @Override
-    public Optional<Activities> findById(long id) {
+    public Optional<Transaction> findById(long id) {
         entityManager.getTransaction().begin();
-        return Optional.ofNullable(entityManager.find(Activities.class, id));
+        return Optional.ofNullable(entityManager.find(Transaction.class, id));
     }
 
     @Override
-    public Activities findBy(String columnName, String value) {
+    public Transaction findBy(String columnName, String value) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("select a from Activities a where " + columnName + " = :value");
+        Query query = entityManager.createQuery("select a from Transaction a where " + columnName + " = :value");
         query.setParameter("value", value);
         try {
-            return (Activities) query.getSingleResult();
+            return (Transaction) query.getSingleResult();
         }catch (NoResultException n){
             return null;
         }
     }
 
     @Override
-    public Optional<List<Activities>> findBy(String columnName, String value, int resultMax) {
+    public Optional<List<Transaction>> findBy(String columnName, String value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("select a from Activities a where " + columnName + " = :value");
+        Query query = entityManager.createQuery("select a from Transaction a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
     }
 
     @Override
-    public Optional<List<Activities>> findBy(String columnName, long value, int resultMax) {
+    public Optional<List<Transaction>> findBy(String columnName, long value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("select a from Activities a where " + columnName + " = :value");
+        Query query = entityManager.createQuery("select a from Transaction a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
     }
 
     @Override
-    public Optional<List<Activities>> findBy(String columnName, int value, int resultMax) {
+    public Optional<List<Transaction>> findBy(String columnName, int value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("select a from Activities a where " + columnName + " = :value");
+        Query query = entityManager.createQuery("select a from Transaction a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
     }
 
     @Override
-    public Optional<List<Activities>> findBy(String columnName, Object value, int resultMax) {
+    public Optional<List<Transaction>> findBy(String columnName, Object value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("select a from Activities a where " + columnName + " = :value");
+        Query query = entityManager.createQuery("select a from Transaction a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
     }
 
     @Override
-    public Activities update(Activities activities) {
+    public Transaction update(Transaction transaction) {
         entityManager.getTransaction().begin();
-        Optional<Activities> activitiesToUpdate = findById(activities.getId());
-        activitiesToUpdate.ifPresent(value -> Merger.merge(value, activities));
+        Optional<Transaction> transactionToUpdate = findById(transaction.getId());
+        transactionToUpdate.ifPresent(value -> Merger.merge(value, transaction));
         entityManager.getTransaction().commit();
-        return activitiesToUpdate.orElse(null);
+        return transactionToUpdate.orElse(null);
     }
 
     @Override
-    public Activities delete(Activities activities) {
+    public Transaction delete(Transaction transaction) {
         return null;
     }
 
     @Override
-    public Activities remove(Activities activities) {
+    public Transaction remove(Transaction transaction) {
         entityManager.getTransaction().begin();
-        entityManager.remove(activities);
+        entityManager.remove(transaction);
         entityManager.getTransaction().commit();
-        return activities;
+        return transaction;
     }
 
     @Override
-    public Optional<List<Activities>> runQuery(String query) {
+    public Optional<List<Transaction>> runQuery(String query) {
         entityManager.getTransaction().begin();
-        Query query1 = entityManager.createQuery(query);
+        Query query1 =  entityManager.createQuery(query);
         entityManager.getTransaction().commit();
         return Optional.ofNullable(query1.getResultList());
     }
 
     @Override
-    public Activities runQuerySingle(String query) {
+    public Transaction runQuerySingle(String query) {
         entityManager.getTransaction().begin();
         Query query1 =  entityManager.createQuery(query);
         entityManager.getTransaction().commit();
         try {
-            return (Activities) query1.getSingleResult();
+            return (Transaction) query1.getSingleResult();
         }catch (NoResultException n){
             return null;
         }

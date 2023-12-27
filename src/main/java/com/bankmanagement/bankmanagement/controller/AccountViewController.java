@@ -3,12 +3,10 @@ package com.bankmanagement.bankmanagement.controller;
 
 import com.bankmanagement.bankmanagement.App;
 import com.bankmanagement.bankmanagement.dao.persistentDao.EmployeeDao;
-import com.bankmanagement.bankmanagement.helper.session.sessionClass.EmployeeSession;
+import com.bankmanagement.bankmanagement.service.session.sessionClass.EmployeeSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;

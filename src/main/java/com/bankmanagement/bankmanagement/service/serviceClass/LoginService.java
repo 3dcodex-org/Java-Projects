@@ -2,7 +2,7 @@ package com.bankmanagement.bankmanagement.service.serviceClass;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.bankmanagement.bankmanagement.dao.persistentDao.EmployeeDao;
-import com.bankmanagement.bankmanagement.helper.session.sessionClass.EmployeeSession;
+import com.bankmanagement.bankmanagement.service.session.sessionClass.EmployeeSession;
 import com.bankmanagement.bankmanagement.model.Employee;
 import com.bankmanagement.bankmanagement.service.serviceInterface.UserManager;
 
@@ -11,7 +11,7 @@ public class LoginService implements UserManager<Employee> {
     private final EmployeeDao employeeDao;
 
     public LoginService(){
-        employeeDao = new EmployeeDao();
+        this.employeeDao = new EmployeeDao();
     }
     public LoginService(EmployeeDao employeeDao){
         this.employeeDao = employeeDao;
