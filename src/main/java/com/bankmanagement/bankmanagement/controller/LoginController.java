@@ -48,11 +48,12 @@ public class LoginController implements Initializable {
     private Label warningMsg;
 
     private final LoginService loginService;
-    public LoginController(){
+
+    public LoginController() {
         this.loginService = new LoginService();
     }
 
-    public LoginController(LoginService loginService){
+    public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
 
@@ -68,11 +69,11 @@ public class LoginController implements Initializable {
     void login(MouseEvent event) throws IOException {
         loginSpinner.setVisible(true);
         loginBtn.setDisable(true);
-        if(!username.getText().isBlank() &&
-                !(password.isVisible()?password.getText() : password2.getText()).isBlank()
-        ){
+        if (!username.getText().isBlank() &&
+                !(password.isVisible() ? password.getText() : password2.getText()).isBlank()
+        ) {
             Employee employee = loginService.login(username.getText(), password.getText());
-            if(employee != null){
+            if (employee != null) {
                 loginBtn.getScene().getWindow().hide();
                 Stage stage = (Stage) loginBtn.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Account-view.fxml"));
@@ -83,10 +84,10 @@ public class LoginController implements Initializable {
                 stage.setResizable(true);
                 stage.show();
                 //todo also figure out the activities logging mechanism
-            }else{
+            } else {
                 warning("Invalid user credentials. Please try again!!");
             }
-        }else{
+        } else {
             warning("All fields must be filled. Try again!!");
         }
     }
@@ -105,11 +106,11 @@ public class LoginController implements Initializable {
 
     @FXML
     void showPassword(MouseEvent event) {
-        if(password.isVisible()){
+        if (password.isVisible()) {
             password2.setText(password.getText());
             password2.setVisible(true);
             password.setVisible(false);
-        }else{
+        } else {
             password.setText(password2.getText());
             password.setVisible(true);
             password2.setVisible(false);
@@ -123,43 +124,4 @@ public class LoginController implements Initializable {
 //        loadSplashScreen();
     }
 
-//    private void loadSplashScreen() {
-//        try {
-//            //Load splash screen view FXML
-//            AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("./startLoad-view.fxml")));
-//            //Add it to root container (Can be StackPane, AnchorPane etc)
-//            root.getChildren().setAll(pane);
-//
-//            //Load splash screen with fade in effect
-//            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
-//            fadeIn.setFromValue(0);
-//            fadeIn.setToValue(1);
-//            fadeIn.setCycleCount(1);
-//
-//            //Finish splash with fade out effect
-////            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
-////            fadeOut.setFromValue(1);
-////            fadeOut.setToValue(0);
-////            fadeOut.setCycleCount(1);
-//
-//            fadeIn.play();
-//
-////            //After fade in, start fade out
-////            fadeIn.setOnFinished((e) -> {
-////                fadeOut.play();
-////            });
-////
-////            //After fade out, load actual content
-////            fadeOut.setOnFinished((e) -> {
-////                try {
-////                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/login.fxml")));
-////                    root.getChildren().setAll(parentContent);
-////                } catch (IOException ex) {
-////                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-////                }
-////            });
-//        } catch (IOException ex) {
-//            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 }
