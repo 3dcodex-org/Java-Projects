@@ -18,8 +18,12 @@ public class AccountDao implements AccountPersist {
     private final EntityManager entityManager;
 
     public AccountDao(){
-        bankManagementPersistentDao = new BankManagementPersistentDao();
-        entityManager = bankManagementPersistentDao.getEntityManager();
+        this.bankManagementPersistentDao = new BankManagementPersistentDao();
+        this.entityManager = this.bankManagementPersistentDao.getEntityManager();
+    }
+    public AccountDao(BankManagementPersistentDao bankManagementPersistentDao){
+        this.bankManagementPersistentDao = new BankManagementPersistentDao();
+        entityManager = this.bankManagementPersistentDao.getEntityManager();
     }
     @Override
     public Account add(Account account) {

@@ -13,7 +13,7 @@ public class SideNavBarController {
     private Label customersbtn;
 
     @FXML
-    private Label dashboardBtn;
+    private Label userBtn;
 
     @FXML
     private Label employeesbtn;
@@ -54,4 +54,6 @@ public class SideNavBarController {
 
     }
 
+    public void showUsers(MouseEvent mouseEvent) {
+    }
 }
