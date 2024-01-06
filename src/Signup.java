@@ -95,9 +95,7 @@ PreparedStatement pst;
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-               setVisible(false);
-        Login ob=new Login();
-        ob.setVisible(true);
+              
             }
         });
 
@@ -195,13 +193,38 @@ PreparedStatement pst;
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+                  try {
+    String sql = "INSERT INTO Information(Username, Name, Password, `Security Question`, Answer) VALUES(?, ?, ?, ?, ?)";
+    pst = conn.prepareStatement(sql);
+    pst.setString(1, jTextField1.getText());
+    pst.setString(2, jTextField2.getText());
+    pst.setString(3, jTextField5.getText());
+    pst.setString(4, jTextField3.getText());
+    pst.setString(5, jTextField4.getText());
+    pst.execute();
+    JOptionPane.showMessageDialog(null, "New Account created");
+    rs.close();
+    pst.close();
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+} finally {
+    try {
+        if (pst != null) {
+            pst.close();
+        }
+    } catch (SQLException e) {
+        // Handle the exception if closing the prepared statement fails
+    } 
+}
           
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        Login ob=new Login();
+        ob.setVisible(true);
+
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
