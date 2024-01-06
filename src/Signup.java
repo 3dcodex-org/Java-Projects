@@ -1,3 +1,5 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +11,16 @@
  */
 
 public class Signup extends javax.swing.JFrame {
-
+Connection conn;
+ResultSet rs;
+PreparedStatement pst;
    
     public Signup() {
    
+     super("Login");
         initComponents();
+        conn = JavaConnect.ConnerDb();
+
        
     
     }
@@ -56,6 +63,7 @@ public class Signup extends javax.swing.JFrame {
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
+           
             }
         });
 
@@ -87,6 +95,9 @@ public class Signup extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+               setVisible(false);
+        Login ob=new Login();
+        ob.setVisible(true);
             }
         });
 
