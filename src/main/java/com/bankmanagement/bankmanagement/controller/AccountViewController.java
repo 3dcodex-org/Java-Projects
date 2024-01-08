@@ -36,7 +36,7 @@ public class AccountViewController implements Initializable {
             employeeSession.cleanUserSession();
             //todo send back to the login view for proper processing
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("transaction-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("sideNavBar.fxml"));
         try {
             navNode = fxmlLoader.load();
             AnchorPane.setTopAnchor(navNode, 0.0);

@@ -12,7 +12,7 @@ import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked","unused"})
 public class UserDao implements UserPersist {
     private final BankManagementPersistentDao bankManagementPersistentDao;
     private final EntityManager entityManager;
@@ -36,15 +36,21 @@ public class UserDao implements UserPersist {
     }
 
     @Override
-    public Optional<User> findById(long id) {
+    public Optional<User> findById(Long id) {
         entityManager.getTransaction().begin();
+        User user = entityManager.find(User.class, id);
+        return Optional.ofNullable(user);
+    }
+
+    @Override
+    public Optional<User> findByIdWithin(Long id){
         return Optional.ofNullable(entityManager.find(User.class, id));
     }
 
     @Override
     public User findBy(String columnName, String value) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("SELECT u FROM users u WHERE " + columnName + " = :value");
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE " + columnName + " = :value");
         query.setParameter("value", value);
         try {
             return (User) query.getSingleResult();
@@ -56,7 +62,7 @@ public class UserDao implements UserPersist {
     @Override
     public Optional<List<User>> findBy(String columnName, String value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("SELECT u FROM users u WHERE " + columnName + " = :value");
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
@@ -65,7 +71,7 @@ public class UserDao implements UserPersist {
     @Override
     public Optional<List<User>> findBy(String columnName, long value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("SELECT u FROM users u WHERE " + columnName + " = :value");
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
@@ -74,7 +80,7 @@ public class UserDao implements UserPersist {
     @Override
     public Optional<List<User>> findBy(String columnName, int value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("SELECT u FROM users u WHERE " + columnName + " = :value");
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
@@ -83,7 +89,7 @@ public class UserDao implements UserPersist {
     @Override
     public Optional<List<User>> findBy(String columnName, Object value, int resultMax) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("SELECT u FROM users u WHERE " + columnName + " = :value");
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
         return Optional.ofNullable(query.getResultList());
@@ -92,7 +98,7 @@ public class UserDao implements UserPersist {
     @Override
     public User update(User user) {
         entityManager.getTransaction().begin();
-        Optional<User> userToUpdate = findById(user.getId());
+        Optional<User> userToUpdate = findByIdWithin(user.getId());
         userToUpdate.ifPresent(value -> Merger.merge(value, user));
         entityManager.getTransaction().commit();
         return userToUpdate.orElse(null);
@@ -101,7 +107,7 @@ public class UserDao implements UserPersist {
     @Override
     public User delete(User user) {
         entityManager.getTransaction().begin();
-        Optional<User> userToDelete = findById(user.getId());
+        Optional<User> userToDelete = findByIdWithin(user.getId());
         userToDelete.ifPresent(value -> value.setStatus(UserStatus.DELETED));
         entityManager.getTransaction().commit();
         return userToDelete.orElse(null);
@@ -135,8 +141,28 @@ public class UserDao implements UserPersist {
         }
     }
 
+    @Override
+    public List<User> findAll() {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select u from User u");
+        entityManager.getTransaction().commit();
+        return  query.getResultList();
+    }
+
+    @Override
+    public List<User> findAllWithRange(int beginIndex, int endIndex) {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select u from User u");
+        entityManager.getTransaction().commit();
+        return  query.getResultList().subList(beginIndex, endIndex);
+    }
+
     public void close(){
         bankManagementPersistentDao.close();
     }
 
+    @Override
+    public void clear() {
+        bankManagementPersistentDao.clear();
+    }
 }

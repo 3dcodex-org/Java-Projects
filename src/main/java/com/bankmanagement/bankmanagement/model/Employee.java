@@ -6,16 +6,18 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity
+@Entity @SuppressWarnings("unused")
 public class Employee {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
+    @Column(unique = true)
     private String username;
+    @Column(unique = true)
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -32,7 +34,7 @@ public class Employee {
     @Column(name = "last_updated")
     private Date lastUpdated;
     public Employee() {}
-    public Employee(String firstName, String lastName, String username, String email, String phoneNumber, String city, String address1, String address2, String role,String password) {
+    public Employee(String firstName, String lastName, String username, String email, String phoneNumber, String city, String address1, String address2, String role, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -48,11 +50,11 @@ public class Employee {
         this.lastUpdated = this.createdDate;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

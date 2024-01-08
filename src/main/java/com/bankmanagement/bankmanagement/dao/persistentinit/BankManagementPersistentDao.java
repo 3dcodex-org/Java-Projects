@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-
+@SuppressWarnings("unused")
 public class BankManagementPersistentDao {
     private EntityManager entityManager;
     private EntityManagerFactory eMf;
@@ -37,6 +37,9 @@ public class BankManagementPersistentDao {
     public void close(){
         this.entityManager.close();
         this.eMf.close();
+    }
+    public void clear(){
+        this.entityManager.clear();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.bankmanagement.bankmanagement.helper.helper;
 
-
 import java.lang.reflect.Method;
 
 public class Merger {

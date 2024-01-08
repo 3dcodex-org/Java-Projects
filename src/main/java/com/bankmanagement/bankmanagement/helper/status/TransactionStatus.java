@@ -1,6 +1,6 @@
 package com.bankmanagement.bankmanagement.helper.status;
 
-public enum Transactiontatus {
+public enum TransactionStatus {
     PENDING,
     SUCCESS,
     FAILURE,

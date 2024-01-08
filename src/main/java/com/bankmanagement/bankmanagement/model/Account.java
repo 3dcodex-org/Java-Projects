@@ -5,11 +5,11 @@ import com.bankmanagement.bankmanagement.helper.status.AccountStatus;
 import com.bankmanagement.bankmanagement.helper.status.AccountType;
 import jakarta.persistence.*;
 
-@Entity
+@Entity @SuppressWarnings("unused")
 public class Account {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "account_number")
+    private Long id;
+    @Column(name = "account_number", unique = true)
     private String AccountNumber;
 
     @ManyToOne
@@ -17,25 +17,25 @@ public class Account {
     private User accountHolder;
     @Column(name = "account_type")
     private AccountType accountType;
-    private double balance;
+    private Double balance;
     @Column(name = "account_status")
     private AccountStatus accountStatus;
     public Account(){
         AccountNumber = AccountNumberGenerator.generate();
     }
 
-    public Account(User accountHolder, AccountType accountType, double balance) {
+    public Account(User accountHolder, AccountType accountType, Double balance) {
         AccountNumber = AccountNumberGenerator.generate();
         this.accountHolder = accountHolder;
         this.accountType = accountType;
         this.balance = balance;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,11 +62,11 @@ public class Account {
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
-    public double getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

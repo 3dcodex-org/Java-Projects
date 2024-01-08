@@ -1,22 +1,22 @@
 package com.bankmanagement.bankmanagement.model;
 
+import com.bankmanagement.bankmanagement.helper.status.TransactionStatus;
 import com.bankmanagement.bankmanagement.helper.status.TransactionType;
 import jakarta.persistence.*;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.Date;
 
-@Entity
+@Entity @SuppressWarnings("unused")
 public class Transaction {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "transaction_type")
     private TransactionType transactionType;
     @ManyToOne
     private Account account;
-    private double amount;
+    private Double amount;
     @Column(name = "branch_code")
-    private int branchCode;
+    private Integer branchCode;
     @ManyToOne
     @JoinColumn(name = "transaction_initiator", nullable = false, updatable = false)
     private User transactionInitiator;
@@ -28,30 +28,30 @@ public class Transaction {
     private Date transactionDate;
     public Transaction(){}
 
-    public Transaction(TransactionType transactionType, Account account, double amount, int branchCode, User transactionInitiator, String transactionReason, Date transactionDate) {
+    public Transaction(TransactionType transactionType, Account account, Double amount, Integer branchCode, User transactionInitiator, String transactionReason) {
         this.transactionType = transactionType;
         this.account = account;
         this.amount = amount;
         this.branchCode = branchCode;
         this.transactionInitiator = transactionInitiator;
         this.transactionReason = transactionReason;
-        this.transactionDate = transactionDate;
+        this.transactionDate = new Date();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public TransactionType getTransationType() {
+    public TransactionType getTransactionType() {
         return transactionType;
     }
 
-    public void setTransationType(TransactionType transationType) {
-        this.transactionType = transationType;
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
     public Account getAccount() {
@@ -62,19 +62,19 @@ public class Transaction {
         this.account = account;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public int getBranchCode() {
+    public Integer getBranchCode() {
         return branchCode;
     }
 
-    public void setBranchCode(int branchCode) {
+    public void setBranchCode(Integer branchCode) {
         this.branchCode = branchCode;
     }
 

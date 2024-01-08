@@ -12,7 +12,7 @@ import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "unused"})
 public class AccountDao implements AccountPersist {
     private final BankManagementPersistentDao bankManagementPersistentDao;
     private final EntityManager entityManager;
@@ -34,8 +34,15 @@ public class AccountDao implements AccountPersist {
     }
 
     @Override
-    public Optional<Account> findById(long id) {
+    public Optional<Account> findById(Long id) {
         entityManager.getTransaction().begin();
+        Account account =  entityManager.find(Account.class, id);
+        entityManager.getTransaction().commit();
+        return Optional.ofNullable(account);
+    }
+
+    @Override
+    public Optional<Account> findByIdWithin(Long id){
         return Optional.ofNullable(entityManager.find(Account.class, id));
     }
 
@@ -44,6 +51,7 @@ public class AccountDao implements AccountPersist {
         entityManager.getTransaction().begin();
         Query query = entityManager.createQuery("select a from Account a where " + columnName + " = :value");
         query.setParameter("value", value);
+        entityManager.getTransaction().commit();
         try {
             return (Account) query.getSingleResult();
         }catch (NoResultException n){
@@ -57,6 +65,7 @@ public class AccountDao implements AccountPersist {
         Query query = entityManager.createQuery("select a from Account a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
+        entityManager.getTransaction().commit();
         return Optional.ofNullable(query.getResultList());
     }
 
@@ -66,6 +75,7 @@ public class AccountDao implements AccountPersist {
         Query query = entityManager.createQuery("select a from Account a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
+        entityManager.getTransaction().commit();
         return Optional.ofNullable(query.getResultList());
     }
 
@@ -75,6 +85,7 @@ public class AccountDao implements AccountPersist {
         Query query = entityManager.createQuery("select a from Account a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
+        entityManager.getTransaction().commit();
         return Optional.ofNullable(query.getResultList());
     }
 
@@ -84,13 +95,14 @@ public class AccountDao implements AccountPersist {
         Query query = entityManager.createQuery("select a from Account a where " + columnName + " = :value");
         query.setParameter("value", value);
         if(resultMax > 0) query.setMaxResults(resultMax);
+        entityManager.getTransaction().commit();
         return Optional.ofNullable(query.getResultList());
     }
 
     @Override
     public Account update(Account account) {
         entityManager.getTransaction().begin();
-        Optional<Account> accountToUpdate = findById(account.getId());
+        Optional<Account> accountToUpdate = findByIdWithin(account.getId());
         accountToUpdate.ifPresent(value -> Merger.merge(value, account));
         entityManager.getTransaction().commit();
         return accountToUpdate.orElse(null);
@@ -99,7 +111,7 @@ public class AccountDao implements AccountPersist {
     @Override
     public Account delete(Account account) {
         entityManager.getTransaction().begin();
-        Optional<Account> accountToDelete =findById(account.getId());
+        Optional<Account> accountToDelete =findByIdWithin(account.getId());
         accountToDelete.ifPresent(value -> value.setAccountStatus(AccountStatus.DELETED));
         entityManager.getTransaction().commit();
         return accountToDelete.orElse(null);
@@ -134,7 +146,28 @@ public class AccountDao implements AccountPersist {
     }
 
     @Override
+    public List<Account> findAll() {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select a from Account a");
+        entityManager.getTransaction().commit();
+        return  query.getResultList();
+    }
+
+    @Override
+    public List<Account> findAllWithRange(int beginIndex, int endIndex) {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select a from Account a");
+        entityManager.getTransaction().commit();
+        return  query.getResultList().subList(beginIndex, endIndex);
+    }
+
+    @Override
     public void close() {
         bankManagementPersistentDao.close();
+    }
+
+    @Override
+    public void clear() {
+        bankManagementPersistentDao.clear();
     }
 }

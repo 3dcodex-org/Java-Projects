@@ -12,7 +12,7 @@ import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked","unused"})
 public class EmployeeDao implements EmployeePersist {
     private final BankManagementPersistentDao bankManagementPersistentDao;
     private final EntityManager entityManager;
@@ -38,7 +38,15 @@ public class EmployeeDao implements EmployeePersist {
     }
 
     @Override
-    public Optional<Employee> findById(long id) {
+    public Optional<Employee> findById(Long id) {
+        entityManager.getTransaction().begin();
+        Employee employee = entityManager.find(Employee.class, id);
+        entityManager.getTransaction().commit();
+        return Optional.ofNullable(employee);
+    }
+
+    @Override
+    public Optional<Employee> findByIdWithin(Long id){
         return Optional.ofNullable(entityManager.find(Employee.class, id));
     }
 
@@ -96,7 +104,7 @@ public class EmployeeDao implements EmployeePersist {
     @Override
     public Employee update(Employee employee) {
         entityManager.getTransaction().begin();
-        Optional<Employee> employeeToUpdate = findById(employee.getId());
+        Optional<Employee> employeeToUpdate = findByIdWithin(employee.getId());
         employeeToUpdate.ifPresent(value -> Merger.merge(value, employee));
         entityManager.getTransaction().commit();
         return employeeToUpdate.orElse(null);
@@ -105,7 +113,7 @@ public class EmployeeDao implements EmployeePersist {
     @Override
     public Employee delete(Employee employee) {
         entityManager.getTransaction().begin();
-        Optional<Employee> employeeToDelete =findById(employee.getId());
+        Optional<Employee> employeeToDelete =findByIdWithin(employee.getId());
         employeeToDelete.ifPresent(value -> value.setStatus(UserStatus.DELETED));
         entityManager.getTransaction().commit();
         return employeeToDelete.orElse(null);
@@ -140,9 +148,29 @@ public class EmployeeDao implements EmployeePersist {
     }
 
     @Override
+    public List<Employee> findAll() {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select e from Employee e");
+        entityManager.getTransaction().commit();
+        return  query.getResultList();
+    }
+
+    @Override
+    public List<Employee> findAllWithRange(int beginIndex, int endIndex) {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select e from Employee e");
+        entityManager.getTransaction().commit();
+        return  query.getResultList().subList(beginIndex, endIndex);
+    }
+
+    @Override
     public void close() {
         bankManagementPersistentDao.close();
     }
 
+    @Override
+    public void clear() {
+        bankManagementPersistentDao.clear();
+    }
 
 }

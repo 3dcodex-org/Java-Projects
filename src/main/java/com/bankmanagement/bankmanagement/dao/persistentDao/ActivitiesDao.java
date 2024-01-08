@@ -11,7 +11,7 @@ import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "unused"})
 public class ActivitiesDao implements ActivitiesPersist {
     private final BankManagementPersistentDao bankManagementPersistentDao;
     private final EntityManager entityManager;
@@ -35,8 +35,15 @@ public class ActivitiesDao implements ActivitiesPersist {
     }
 
     @Override
-    public Optional<Activities> findById(long id) {
+    public Optional<Activities> findById(Long id) {
         entityManager.getTransaction().begin();
+        Activities activities = entityManager.find(Activities.class, id);
+        entityManager.getTransaction().commit();
+        return Optional.ofNullable(activities);
+    }
+
+    @Override
+    public Optional<Activities> findByIdWithin(Long id){
         return Optional.ofNullable(entityManager.find(Activities.class, id));
     }
 
@@ -131,7 +138,28 @@ public class ActivitiesDao implements ActivitiesPersist {
     }
 
     @Override
+    public List<Activities> findAll() {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select a from Activities a");
+        entityManager.getTransaction().commit();
+        return  query.getResultList();
+    }
+
+    @Override
+    public List<Activities> findAllWithRange(int beginIndex, int endIndex) {
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createQuery("select a from Activities a");
+        entityManager.getTransaction().commit();
+        return  query.getResultList().subList(beginIndex, endIndex);
+    }
+
+    @Override
     public void close() {
         bankManagementPersistentDao.close();
+    }
+
+    @Override
+    public void clear() {
+        bankManagementPersistentDao.clear();
     }
 }
