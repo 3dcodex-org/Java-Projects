@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="520.0" maxWidth="691.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="691.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.loginController">
+   <children>
+      <Label layoutX="399.0" layoutY="14.0" text="LOGIN FORM" textFill="#04252e">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="330.0" layoutY="131.0" text="Email :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="330.0" layoutY="181.0" prefHeight="27.0" prefWidth="102.0" text="Password :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="text1" layoutX="432.0" layoutY="131.0" prefHeight="26.0" prefWidth="214.0" promptText="address email" />
+      <TextField fx:id="text2" layoutX="432.0" layoutY="181.0" prefHeight="26.0" prefWidth="214.0" promptText="e.g zzxjisi.pjfkl@#" />
+      <Button fx:id="logingBtn" layoutX="321.0" layoutY="304.0" mnemonicParsing="false" onMouseClicked="#loging" prefHeight="42.0" prefWidth="333.0" text="LOGIN" textFill="#e5a607">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Button>
+      <AnchorPane prefHeight="520.0" prefWidth="282.0" style="-fx-background-color: #64a139;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="42.0" layoutY="242.0" text="Welcome to page" textFill="#e0db10">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Box depth="100" drawMode="LINE" height="100" layoutX="141.0" layoutY="163.0" rotate="52.8" width="100" />
+            <ImageView fitHeight="97.0" fitWidth="102.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Pictures/ICTULogoNew.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <FontAwesomeIconView fill="#035e2e" glyphName="USER" layoutX="452.0" layoutY="86.0" size="40" wrappingWidth="13.300000190734863" />
+   </children>
+</AnchorPane>
