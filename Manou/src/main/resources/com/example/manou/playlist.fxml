@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="split" dividerPositions="0.39869458797933094" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manou.PlaylistController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="282.0" style="-fx-background-color: #006666;">
+         <children>
+            <Label fx:id="Welcomelabel" layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="138.0" text="Welcome!" textFill="#faf9f9">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+            <ButtonBar fx:id="Searchbar" layoutX="2.0" layoutY="68.0" prefHeight="26.0" prefWidth="283.0" style="-fx-background-color: ffffff;">
+               <buttons>
+                  <Button fx:id="Searchbutton" minWidth="72.0" mnemonicParsing="false" onAction="#Searchtrack" prefHeight="26.0" style="-fx-background-color: #000000; fx-text-fill-color: ffffff;" text="Search" textFill="#faf8f8" />
+               </buttons>
+            </ButtonBar>
+            <Button fx:id="Homebutton" alignment="CENTER" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" onAction="#toHome" prefHeight="36.0" prefWidth="284.0" style="-fx-background-color: #006666;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="Librarybutton" alignment="CENTER" layoutX="2.0" layoutY="179.0" mnemonicParsing="false" onAction="#toLibrary" prefHeight="36.0" prefWidth="283.0" style="-fx-background-color: #006666; -fx-border-color: #006666;" text="Music Library" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="Playlistbutton" alignment="CENTER" layoutX="8.0" layoutY="223.0" mnemonicParsing="false" onAction="#toplaylist" prefHeight="36.0" prefWidth="287.0" style="-fx-background-color: #006666; -fx-border-color: #006666;" text="Playlists" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="426.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label fx:id="playlistlabel" layoutX="21.0" layoutY="14.0" prefHeight="46.0" prefWidth="121.0" text="Playlists" textFill="#f7f6f6">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="progressbar" layoutY="462.0" prefHeight="14.0" prefWidth="426.0" progress="0.0" />
+            <Slider fx:id="Volumeslider" layoutX="331.0" layoutY="489.0" prefHeight="14.0" prefWidth="94.0" />
+            <Button fx:id="Playbutton" layoutY="478.0" mnemonicParsing="false" onAction="#Playtrack" prefHeight="36.0" prefWidth="52.0" style="-fx-background-color: #000000;" text="PLAY" textFill="#faf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="Pausebutton" layoutX="52.0" layoutY="480.0" mnemonicParsing="false" onAction="#Pausetrack" prefHeight="36.0" prefWidth="58.0" style="-fx-background-color: #000000;" text="PAUSE" textFill="#fcfafa">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="Nextbutton" layoutX="110.0" layoutY="481.0" mnemonicParsing="false" onAction="#Nexttrack" prefHeight="36.0" prefWidth="52.0" style="-fx-background-color: #000000;" text="NEXT" textFill="#faf7f7">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="Previousbutton" layoutX="162.0" layoutY="481.0" mnemonicParsing="false" onAction="#Previoustrack" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: #000000;" text="PREVIOUS" textFill="#faf8f8">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="Shufflebutton" layoutX="247.0" layoutY="478.0" mnemonicParsing="false" onAction="#Shuffletrack" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #000000;" text="SHUFFLE" textFill="#f2f0f0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="newplaylistbutton" layoutX="21.0" layoutY="70.0" mnemonicParsing="false" onAction="#createplaylist" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #006666;" text="+ New Playlist">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
