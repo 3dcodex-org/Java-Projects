@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/About.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/Home.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/Forgot.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/Statistics.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/javaConnect.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/IssueBook.java</file>
-            <file>file:/C:/Users/pc/Desktop/javac/Library_Management_System/src/Login.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Statistics.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/ReturnBook.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Login.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/JavaConnect.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Home.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/About.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Forgot.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Signup.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/NewBook.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Students.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/Loading.java</file>
+            <file>file:/C:/Users/pc/Desktop/javac/Library_System/src/IssueBook.java</file>
         </group>
     </open-files>
 </project-private>
